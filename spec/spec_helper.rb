@@ -17,6 +17,11 @@ Spork.prefork do
     config.use_transactional_fixtures = true
     config.order = "random"
   end
+
+  Capybara.configure do |config|
+    config.match = :prefer_exact
+    config.ignore_hidden_elements = true
+  end
 end
 
 

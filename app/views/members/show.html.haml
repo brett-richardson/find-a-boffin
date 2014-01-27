@@ -1,2 +1,3 @@
 %h1= resource.name
-%h2= resource.website
+%h2.website= link_to resource.website,   resource.website
+%h2.short_url= link_to resource.short_url, resource.short_url

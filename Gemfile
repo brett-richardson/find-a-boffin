@@ -12,7 +12,8 @@ gem 'bundler'
 gem 'simple_form'
 
 #= Backend ===
-gem 'inherited_resources'
+gem 'inherited_resources' # RESTful controller action inheritance
+gem 'googl'               # Goo.gl url shortening
 
 #= Utilities ===
 gem 'rb-readline'
@@ -43,7 +44,6 @@ group :development, :test do
   gem 'dotenv-rails' # Load environment vars from file
   gem 'teaspoon' # JS testing Rails engine & rake tasks
   gem 'pry' # Rails debugger
-  # gem 'terminal-notifier-guard' # Terminal notifications for guard
   gem 'growl'
   gem 'guard' # File system watcher
   gem 'guard-bundler'
@@ -53,7 +53,6 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara' # Acceptance tests
-  gem 'poltergeist' # Headless testing
   gem 'shoulda-matchers' # RSpec matchers for ActiveRecord
   gem 'factory_girl'
   gem 'factory_girl_rails' # Testing factories
