@@ -1,8 +1,11 @@
 require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
-require 'dotenv'
-Dotenv.load
+# Loads the environment variables present in .env into the ENV[]
+if ENV['DYNO'].nil? # Ensure we're not on Heroku, because this causes problems there
+  require 'dotenv'
+  Dotenv.load
+end
 
 Bundler.require(:default, Rails.env)
 
