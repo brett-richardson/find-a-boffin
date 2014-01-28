@@ -29,6 +29,13 @@ gem 'lodash-rails'
 gem 'bootstrap-sass'
 
 
+#= Production Only ===
+
+group :production do
+  gem 'rails_12factor'
+end
+
+
 #= Development & Testing Only ===
 
 group :development do
@@ -53,6 +60,8 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara' # Acceptance tests
+  gem 'selenium-webdriver'
+  # gem 'capybara-webkit' # Headless webkit for acceptance testing
   gem 'shoulda-matchers' # RSpec matchers for ActiveRecord
   gem 'factory_girl'
   gem 'factory_girl_rails' # Testing factories

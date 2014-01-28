@@ -7,7 +7,7 @@ class UrlShortener
     end
 
     def asyncronous
-      raise Exception.new 'Not implemented'
+      raise FeatureNotImplemented.new 'Async URL shortener not yet implemented.'
       # TODO: Queue a SideKiq worker or async job here
     end
 
@@ -18,7 +18,12 @@ class UrlShortener
 
 
     def shorten( url )
-      Googl.shorten( url ).short_url
+      begin
+        Googl.shorten( url ).short_url
+      rescue Exception => e
+        Rails.logger.error "Goo.gl URL shortener failed. Exception class: #{e.class}, Exception message: #{e.message}"
+        return url
+      end
     end
 
   end

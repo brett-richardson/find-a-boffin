@@ -1,0 +1,2 @@
+class FeatureNotImplemented < Exception
+end
