@@ -3,6 +3,11 @@ class MemberDecorator < Draper::Decorator
   delegate_all
 
 
+  def linked_name
+    h.link_to model.name, h.member_url( member )
+  end
+
+
   def short_url
     h.link_to model.short_url, model.short_url
   end

@@ -1,0 +1,12 @@
+%table.table.table-rounded.table-striped
+  %thead
+    %th Name
+    %th Short URL
+    %th Friends
+
+  - collection_decorator.each do |member|
+    %tr.Member
+      %td= member.linked_name
+      %td= member.short_url
+      %td= member.friends_count
+
