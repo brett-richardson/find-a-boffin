@@ -1,2 +1,0 @@
-class ShortUrlFailed < Exception
-end

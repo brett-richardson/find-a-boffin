@@ -17,11 +17,22 @@ describe Member do
   end
 
   describe 'url shortening' do
-    before{ UrlShortener.any_instance.stub syncronous: 'http://test.co/abc' }
+    before{ UrlShortener.stub syncronous: 'http://test.co/abc' }
 
     it 'creates a short url before validation' do
-      subject.valid?
+      subject.save
       subject.short_url.should match Url::FORMAT
+    end
+  end
+
+  describe 'content scraping' do
+    let( :content_hash ){ { 'h1' => 'Head 1', 'h2' => 'Head 2', 'h3' => 'Head 3' } }
+
+    before{ ContentFinder.stub syncronous: content_hash }
+
+    it 'scrapes content from website before validation' do
+      subject.valid?
+      subject.content.should be_a Hash
     end
   end
 end

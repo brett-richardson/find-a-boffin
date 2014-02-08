@@ -21,8 +21,7 @@ class UrlShortener
       begin
         Googl.shorten( url ).short_url
       rescue Exception => e
-        Rails.logger.error "Goo.gl URL shortener failed. Exception class: #{e.class}, Exception message: #{e.message}"
-        return url
+        raise ServiceFailed.new "UrlShortener service failed with message: #{e.message}"
       end
     end
 

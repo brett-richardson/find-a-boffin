@@ -10,10 +10,12 @@ gem 'bundler'
 
 #= Views ===
 gem 'simple_form'
+gem 'draper'
 
 #= Backend ===
 gem 'inherited_resources' # RESTful controller action inheritance
 gem 'googl'               # Goo.gl url shortening
+gem 'nokogiri'            # HTML Parsing
 
 #= Utilities ===
 gem 'rb-readline'
@@ -59,9 +61,9 @@ group :development, :test do
   gem 'guard-teaspoon'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'capybara' # Acceptance tests
+  gem 'capybara', '2.0.3' # Acceptance tests
   gem 'selenium-webdriver'
-  # gem 'capybara-webkit' # Headless webkit for acceptance testing
+  gem 'capybara-webkit' # Headless webkit for acceptance testing
   gem 'shoulda-matchers' # RSpec matchers for ActiveRecord
   gem 'factory_girl'
   gem 'factory_girl_rails' # Testing factories

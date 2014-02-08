@@ -1,0 +1,2 @@
+class ServiceFailed < Exception
+end
