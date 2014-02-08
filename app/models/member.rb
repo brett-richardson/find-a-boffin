@@ -1,21 +1,40 @@
 class Member < ActiveRecord::Base
 
-  has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships, counter_cache: true
+  #= Relationships ===
+  has_many :friendships, dependent: :destroy,
+    inverse_of: :member
   has_many :inverse_friendships, dependent: :destroy,
     inverse_of: :target, class_name: 'Friendship'
 
+  has_many :friends,         through: :friendships
+  has_many :inverse_friends, through: :inverse_friendships
+
+  #= Validations ===
   validates :name,    presence: true
   validates :website, presence: true, format: Url::FORMAT
 
+  #= Callbacks ===
   before_save :set_short_url, if: :set_short_url?
   before_save :set_content,   if: :set_content?
 
+  #= Misc ===
   serialize :content
 
 
-  def friends_count
-    0
+  #= Friendships ===
+
+  def friends_count # FIXME: Not very performant. Needs counter caching.
+    combined_friendships.count
+  end
+
+
+  def combined_friendships
+    Friendship.where 'member_id = :id OR target_id = :id', { id: id }
+  end
+
+
+  def filtered_friends # Returns all members of friendships which aren't the user
+    combined_friendships.map{ |f| f.member_id == id ? f.target : f.member }
   end
 
 

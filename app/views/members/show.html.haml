@@ -1,10 +1,25 @@
-%h1= decorator.name
-%h2.website= decorator.website
-%h2.short_url= decorator.short_url
+%h1
+  = decorator.name
+  %small Member
+  -# Lol
 
-.well
-  %h4 Website Content
+.row
+  .col-lg-7
+    %p.lead= decorator.website
+    %p= decorator.short_url
 
-  %h1= decorator.content_from 'h1'
-  %h2= decorator.content_from 'h2'
-  %h3= decorator.content_from 'h3'
+    %hr
+
+    %h4 Website Content
+
+    %p= decorator.content_from 'h1'
+    %p= decorator.content_from 'h2'
+    %p= decorator.content_from 'h3'
+
+  .col-lg-5
+    .pull-right= link_to 'Create Friendship',
+      url_for( controller: 'friendships', action: 'new', member_id: decorator.id ),
+      class: 'btn btn-sm btn-primary'
+
+    %h4 Friends
+    = decorator.friends_list

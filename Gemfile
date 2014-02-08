@@ -11,11 +11,13 @@ gem 'bundler'
 #= Views ===
 gem 'simple_form'
 gem 'draper'
+gem 'active_link_to'
 
 #= Backend ===
 gem 'inherited_resources' # RESTful controller action inheritance
 gem 'googl'               # Goo.gl url shortening
 gem 'nokogiri'            # HTML Parsing
+#gem 'counter_culture'    # Better AR Counter Cache support
 
 #= Utilities ===
 gem 'rb-readline'

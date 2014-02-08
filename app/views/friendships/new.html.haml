@@ -1,0 +1,19 @@
+.container
+  .row
+    .col-lg-6.col-lg-offset-3
+      %h1
+        Create a Friendship<br />
+        %small with #{@member.name}
+
+      .well
+        = simple_form_for resource,
+          url: member_friendships_path do |f|
+
+          .form-group= f.association :member,
+            input_html: { class: 'form-control' },
+            disabled: true
+
+          .form-group= f.association :target,
+            input_html: { class: 'form-control' }
+
+          = f.submit class: 'btn btn-lg btn-primary'
