@@ -1,5 +1,10 @@
 class Member < ActiveRecord::Base
 
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships, counter_cache: true
+  has_many :inverse_friendships, dependent: :destroy,
+    inverse_of: :target, class_name: 'Friendship'
+
   validates :name,    presence: true
   validates :website, presence: true, format: Url::FORMAT
 

@@ -4,6 +4,12 @@ require 'spec_helper'
 describe Member do
   subject( :member ){ build :member }
 
+  describe 'relationships' do
+    it{ should have_many :friendships }
+    it{ should have_many( :friends ).through :friendships }
+    it{ should have_many :inverse_friendships }
+  end
+
   describe 'validations' do
     describe 'name' do
       it{ should validate_presence_of :name }
