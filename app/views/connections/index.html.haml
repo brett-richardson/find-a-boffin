@@ -1,5 +1,13 @@
 .container
-  %h1 Your search yielded #{@connections.length} results
+  %h2
+    =@connections.length
+    possible connections
+    %small
+      found for
+      = @member.name
+      with the term
+      %em= params[:q]
+
 
   - @connections.each do |c|
     .Connection.well

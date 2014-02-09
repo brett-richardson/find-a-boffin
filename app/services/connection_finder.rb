@@ -19,11 +19,9 @@ class ConnectionFinder
 
   def connections
     begin
-      matches.inject( [] ) do |result, m|
-        nearest_trail_to( m ).each do |trail|
-          result << Connection.new( trail, @member, m )
-        end
-        result
+      matches.inject( [] ) do |result, member|
+        shortest = trails_to( member ).sort{ |t| t.length }
+        result << Connection.new( shortest, @member, member )
       end
     rescue Exception => e
       raise ServiceFailed.new "ConnectionFinder service failed with message: #{e.message}"
@@ -46,8 +44,8 @@ class ConnectionFinder
   end
 
 
-  def nearest_trail_to( member, trail = [], depth = 0 )
-    return if depth > 4
+  def trails_to( member, trail = [], depth = 0 )
+    return if depth > 6
     trail = trail.clone
     trail << member.id
 
@@ -57,10 +55,8 @@ class ConnectionFinder
       common_ids.map{ |id| trail.clone << id }
     else
       member.filtered_friends.inject( [] ) do |result, m|
-        next if (
-          @member.filtered_friend_ids.include? m.id or trail.include? m.id
-        )
-        result + nearest_trail_to( m, trail, depth + 1 )
+        friend_trails = trails_to( m, trail, depth + 1 )
+        result + friend_trails  unless friend_trails.nil?
         result
       end
     end
