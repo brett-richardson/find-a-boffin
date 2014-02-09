@@ -12,10 +12,4 @@ describe FriendshipsController do
     specify{ request and response.should be_success }
   end
 
-  describe 'GET index.json' do
-    let( :request ){ get :index, format: :json }
-
-    specify{ request and response.should be_success }
-  end
-
 end

@@ -5,8 +5,8 @@ class Friendship < ActiveRecord::Base
   belongs_to :target, class_name: 'Member', inverse_of: :inverse_friendships
 
   #= Validation ===
-  validates_presence_of :member_id
-  validates_presence_of :target_id
+  validates_presence_of :member
+  validates_presence_of :target
   validate :different_member_and_target
   validate :friendship_unique
 

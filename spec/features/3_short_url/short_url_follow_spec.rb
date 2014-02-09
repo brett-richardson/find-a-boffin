@@ -8,6 +8,7 @@ describe 'Has a short URL generated with Goog.gl' do
 
   specify{
     visit member_path member
-    find( 'h2.short_url a' )['href'].should match %r{http://goo.gl/.*}
+    find( '.short_url a' )['href'].should match %r{http://goo.gl/.*}
+    find( '.website a'   )['href'].should match %r{http://dablweb.com}
   }
 end

@@ -7,9 +7,4 @@ describe 'Friendships routing' do
     action: 'new', controller: 'friendships', member_id: '1'
   ) }
 
-
-  specify{ expect( get: '/friendships.json' ).to route_to(
-    action: 'index', controller: 'friendships', format: 'json'
-  ) }
-
 end
