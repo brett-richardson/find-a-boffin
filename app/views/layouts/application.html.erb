@@ -11,14 +11,8 @@
 
 <body>
   <%= flash_messages %>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <%= render 'shared/nav' %>
-        <%= yield %>
-      </div>
-    </div>
-  </div>
+  <%= render 'shared/nav' %>
+  <%= yield %>
 </body>
 
 </html>

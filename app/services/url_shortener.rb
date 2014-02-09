@@ -1,20 +1,18 @@
 class UrlShortener
 
-  class << self #= Class methods ===
-
+  class << self
     def syncronous( url ) # FIXME: Making calls to 3rd party services during a request is naughty.
       shorten url
     end
 
     def asyncronous
-      raise FeatureNotImplemented.new 'Async URL shortener not yet implemented.'
-      # TODO: Queue a SideKiq worker or async job here
+      raise FeatureNotImplemented.new 'Async URL shortener not yet implemented.' # TODO: Queue a SideKiq worker or async job here
     end
 
 
-    #===========================================================================
+    #=============================================================================
       protected
-    #===========================================================================
+    #=============================================================================
 
 
     def shorten( url )
@@ -24,7 +22,6 @@ class UrlShortener
         raise ServiceFailed.new "UrlShortener service failed with message: #{e.message}"
       end
     end
-
   end
 
 end

@@ -38,6 +38,18 @@ class Member < ActiveRecord::Base
   end
 
 
+  def filtered_friend_ids
+    combined_friendships.map{
+      |f| [f.member_id, f.target_id]
+    }.flatten.select{ |fid| fid != id }
+  end
+
+
+  def friend_ids_in_common( member )
+    ( filtered_friend_ids & member.filtered_friend_ids ).uniq
+  end
+
+
   #=============================================================================
     protected
   #=============================================================================

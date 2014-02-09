@@ -1,7 +1,6 @@
 class FriendshipsController < InheritedResources::Base
 
   belongs_to :member
-  respond_to :json, only: :index
 
 
   def new

@@ -18,4 +18,4 @@ Using Ruby on Rails we would like you to create a simple expert search tool. The
 
 * Bonus points for not using Twitter Bootstrap or any other CSS framework (We want to see how you structure your CSS).
 
-We encourage you to use gems and libraries for everything except the search, where we want to see your algorithm. We are looking for a simple, clean, elegant design, tests and all round understanding of the full stack e.g. Ruby, Rails, CSS (or SASS), HTML (or HAML), JavaScript (or CoffeeScript). 
+We encourage you to use gems and libraries for everything except the search, where we want to see your algorithm. We are looking for a simple, clean, elegant design, tests and all round understanding of the full stack e.g. Ruby, Rails, CSS (or SASS), HTML (or HAML), JavaScript (or CoffeeScript).

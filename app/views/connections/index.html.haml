@@ -1,0 +1,10 @@
+.container
+  %h1 Your search yielded #{@connections.length} results
+
+  - @connections.each do |c|
+    .Connection.well
+      %h3
+        = c.linked_name
+        %small= c.depth
+
+      = c.connection_list.html_safe
